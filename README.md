@@ -4,10 +4,10 @@ Replacement of Windows 10's proxy page
 ## 由于Windows 10 的系统代理界面的 bypass 列表文本框太小，写了这个简单的工具
 
 ### Windows 10 代理设置界面
-![so small textbox](images\systemProxy.png)
+![so small textbox](images/systemproxy.png)
 
 ### 软件界面
-![a](images\ui.png)
+![a](images/ui.png)
 
 ### 功能
 * 设置代理
