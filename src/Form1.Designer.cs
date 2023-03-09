@@ -1,4 +1,4 @@
-﻿namespace SetProxy
+﻿namespace UsingDotNET.SetProxy
 {
     partial class Form1
     {
