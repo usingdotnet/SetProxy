@@ -30,18 +30,6 @@ using System.Runtime.InteropServices;
 
 
 // 前3位来自根目录下的GitInfo.txt
-[assembly: AssemblyVersion(ThisAssembly.Git.BaseVersion.Major + "." +
-                           ThisAssembly.Git.BaseVersion.Minor + "." +
-                           ThisAssembly.Git.BaseVersion.Patch + "." +
-                           ThisAssembly.Git.Commits)]
-
-[assembly: AssemblyFileVersion(ThisAssembly.Git.BaseVersion.Major + "." +
-                               ThisAssembly.Git.BaseVersion.Minor + "." +
-                               ThisAssembly.Git.BaseVersion.Patch + "." +
-                               ThisAssembly.Git.Commits)]
-
-[assembly: AssemblyInformationalVersion(ThisAssembly.Git.BaseVersion.Major + "." +
-                                        ThisAssembly.Git.BaseVersion.Minor + "." +
-                                        ThisAssembly.Git.BaseVersion.Patch + "." +
-                                        ThisAssembly.Git.Commits +
-                                        " (" + ThisAssembly.Git.Branch + " " + ThisAssembly.Git.Commit + ")")]
+[assembly: AssemblyVersion("1.0.0.3")]
+[assembly: AssemblyFileVersion("1.0.0.3")]
+[assembly: AssemblyInformationalVersion("1.0.0.3")]
