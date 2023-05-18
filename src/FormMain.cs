@@ -3,10 +3,11 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+#pragma warning disable CA1416
 
 namespace UsingDotNET.SetProxy;
 
-public partial class Form1 : Form
+public partial class FormMain : Form
 {
     [DllImport("wininet.dll")]
     public static extern bool InternetSetOption(nint hInternet, int dwOption, nint lpBuffer, int dwBufferLength);
@@ -23,12 +24,12 @@ public partial class Form1 : Form
     //private string bypass = "";
     private const string ByPassFile = "proxyByPass.ini";
 
-    public Form1()
+    public FormMain()
     {
         InitializeComponent();
     }
 
-    private void Form1_Load(object sender, EventArgs e)
+    private void FormMain_Load(object sender, EventArgs e)
     {
         _keyName = UserRoot + "\\" + Subkey;
         var enbled = Registry.GetValue(_keyName, ProxyEnable, 0);
@@ -71,9 +72,9 @@ public partial class Form1 : Form
         if (_proxy.Length != 0)
             Registry.SetValue(_keyName, ProxyServer, _proxy);
 
-        Registry.SetValue(_keyName, ProxyEnable, chkEnabled.Checked ? 1 : 0, RegistryValueKind.DWord);
+        ToggleProxy();
         File.WriteAllText(ByPassFile, txtProxyByPass.Text);
-        List<string> list = new List<string>(Regex.Split(txtProxyByPass.Text, Environment.NewLine));
+        var list = new List<string>(Regex.Split(txtProxyByPass.Text, Environment.NewLine));
 
         var real = new List<string>();
         foreach (string s in list)
@@ -95,6 +96,11 @@ public partial class Form1 : Form
         InternetSetOption(nint.Zero, InternetOptionRefresh, nint.Zero, 0);
     }
 
+    private void ToggleProxy()
+    {
+        Registry.SetValue(_keyName, ProxyEnable, chkEnabled.Checked ? 1 : 0, RegistryValueKind.DWord);
+    }
+
     private void btnSetProxy_Click(object sender, EventArgs e)
     {
         SetProxy();
@@ -109,5 +115,10 @@ public partial class Form1 : Form
         };
 
         Process.Start(psi);
+    }
+
+    private void chkEnabled_CheckedChanged(object sender, EventArgs e)
+    {
+        ToggleProxy();
     }
 }

@@ -12,6 +12,6 @@ internal static class Program
         // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
         Application.SetDefaultFont(new Font(new FontFamily("Microsoft YaHei UI"), 12f));
-        Application.Run(new Form1());
+        Application.Run(new FormMain());
     }
 }

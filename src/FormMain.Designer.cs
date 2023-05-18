@@ -1,6 +1,6 @@
 ﻿namespace UsingDotNET.SetProxy
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         ///  Required designer variable.
@@ -71,6 +71,7 @@
             chkEnabled.TabIndex = 2;
             chkEnabled.Text = "使用代理服务器";
             chkEnabled.UseVisualStyleBackColor = true;
+            chkEnabled.CheckedChanged += chkEnabled_CheckedChanged;
             // 
             // txtProxyServer
             // 
@@ -120,7 +121,7 @@
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Set Proxy";
-            Load += Form1_Load;
+            Load += FormMain_Load;
             ResumeLayout(false);
             PerformLayout();
         }
