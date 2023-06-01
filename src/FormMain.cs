@@ -79,7 +79,7 @@ public partial class FormMain : Form
         var real = new List<string>();
         foreach (string s in list)
         {
-            if (!string.IsNullOrEmpty(s) && !s.StartsWith("--"))
+            if (!string.IsNullOrEmpty(s) && !s.StartsWith("--") && !s.StartsWith(";"))
             {
                 real.Add(s);
             }
