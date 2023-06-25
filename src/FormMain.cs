@@ -1,5 +1,6 @@
 using Microsoft.Win32;
 using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -31,6 +32,17 @@ public partial class FormMain : Form
 
     private void FormMain_Load(object sender, EventArgs e)
     {
+        string runtime = RuntimeInformation.FrameworkDescription;
+        var assembly = Assembly.GetExecutingAssembly();
+        string file = assembly.ManifestModule.FullyQualifiedName;
+        DateTime lastWriteTime = File.GetLastWriteTime(file);
+        var ts = lastWriteTime.ToString("yyMMdd");
+        if (assembly.GetName().Version is { } version)
+        {
+            string assemblyVersion = version.ToString();
+            Text += $@" - {assemblyVersion}-{ts} ({runtime})";
+        }
+
         _keyName = UserRoot + "\\" + Subkey;
         var enbled = Registry.GetValue(_keyName, ProxyEnable, 0);
         if (enbled is int en)
