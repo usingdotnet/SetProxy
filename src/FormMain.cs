@@ -103,7 +103,7 @@ public partial class FormMain : Form
             Registry.SetValue(_keyName, ProxyOverride, bypass);
 
         // These lines implement the Interface in the beginning of program 
-        // They cause the OS to refresh the settings, causing IP to realy update
+        // They cause the OS to refresh the settings, causing IP to really update
         InternetSetOption(nint.Zero, InternetOptionSettingsChanged, nint.Zero, 0);
         InternetSetOption(nint.Zero, InternetOptionRefresh, nint.Zero, 0);
     }
