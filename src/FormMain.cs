@@ -85,8 +85,10 @@ public partial class FormMain : Form
             Registry.SetValue(_keyName, ProxyServer, _proxy);
 
         ToggleProxy();
-        File.WriteAllText(ByPassFile, txtProxyByPass.Text);
-        var list = new List<string>(Regex.Split(txtProxyByPass.Text, Environment.NewLine));
+        string txt = txtProxyByPass.Text;
+        txt = txt.Replace("£»", ";");
+        File.WriteAllText(ByPassFile, txt);
+        var list = new List<string>(Regex.Split(txt, Environment.NewLine));
 
         var real = new List<string>();
         foreach (string s in list)
